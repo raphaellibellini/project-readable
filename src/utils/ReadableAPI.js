@@ -72,7 +72,7 @@ export const deletePost = id =>
 
 
 export const votePost = (id, option) =>
-    fetch(`${API}/posts/${id}`, {
+    fetch(`${api}/posts/${id}`, {
         method: 'POST',
         headers,
         body: JSON.stringify({ option })
