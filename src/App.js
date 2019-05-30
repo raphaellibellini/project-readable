@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { receivePosts } from './actions/posts'
 import * as ReadableAPI from './utils/ReadableAPI'
 import { receiveCategories } from './actions/categories';
+import ListPosts from './components/ListPosts'
 
 class App extends Component {
   componentDidMount() {
@@ -18,25 +19,7 @@ class App extends Component {
     const { categories } = this.props
     return (
       <div>
-        <div>
-          <nav>
-            <ul>
-              {categories && categories.map((category) => (
-                <li key={category.path}>
-                  <b>{category.name}</b>
-                </li>
-              ))}
-            </ul>
-          </nav>
-        </div>
-        
-        {this.props.posts.map(post => (
-          <div key={post.id}>
-            <h1>{post.title}</h1>
-            <p>{post.author}</p>
-            <p>{post.body}</p>
-          </div>
-        ))}
+        <ListPosts/>
       </div>
     );
   }
