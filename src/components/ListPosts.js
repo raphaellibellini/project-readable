@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import Post from './Post'
 
 class ListPosts extends Component {
     render() {
@@ -8,7 +9,7 @@ class ListPosts extends Component {
                 <ul>
                     {this.props.postIds.map((id) => (
                         <li key={id}>
-                            <div>POST ID: {id}</div>
+                            <Post id={id} />
                         </li>
                     ))}
                 </ul>
