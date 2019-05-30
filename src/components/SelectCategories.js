@@ -6,13 +6,15 @@ class SelectCategories extends Component {
         const { categories } = this.props
 
         return (
-            <div>
+            <nav>
                 <ul>
                     {categories && categories.map((category) => (
-                        <li key={category.path}>{category.name}</li>
+                        <li key={category.path}>
+                            {category.name}
+                        </li>
                     ))}
                 </ul>
-            </div>
+            </nav>
         )
     }
 }
