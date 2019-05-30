@@ -5,6 +5,7 @@ import { receivePosts } from './actions/posts'
 import * as ReadableAPI from './utils/ReadableAPI'
 import { receiveCategories } from './actions/categories';
 import ListPosts from './components/ListPosts'
+import Nav from './components/Nav'
 
 class App extends Component {
   componentDidMount() {
@@ -19,7 +20,8 @@ class App extends Component {
     const { categories } = this.props
     return (
       <div>
-        <ListPosts/>
+        <Nav />
+        <ListPosts />
       </div>
     );
   }
