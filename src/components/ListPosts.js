@@ -4,12 +4,20 @@ import Post from './Post'
 
 class ListPosts extends Component {
     render() {
+        let { posts } = this.props
+        const category = this.props.match.params.id
+        if (category !== undefined) {
+            posts = posts.filter(post => {
+                return post.category === category
+            })
+        }
+
         return(
             <div>
                 <ul>
-                    {this.props.postIds.map((id) => (
-                        <li key={id}>
-                            <Post id={id} />
+                    {posts.map(post => (
+                        <li key={post.id}>
+                            <Post post={post} />
                         </li>
                     ))}
                 </ul>
@@ -19,11 +27,7 @@ class ListPosts extends Component {
 }
 
 function mapStateToProps ({ posts }) {
-    return{
-        postIds: Object.keys(posts)
-            .sort((a,b) => posts[b].timestamp - posts[a].timestamp)
-    }
-    
+    return { posts }
 }
 
 export default connect(mapStateToProps)(ListPosts)

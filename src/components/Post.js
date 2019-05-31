@@ -19,12 +19,4 @@ class Post extends Component {
     }
 }
 
-function mapStateToProps ({ posts }, { id }) {
-    const post = posts[id]
-
-    return {
-        post
-    }
-}
-
-export default connect(mapStateToProps)(Post)
+export default Post
