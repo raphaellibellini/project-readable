@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import { format } from 'timeago.js';
+
 
 class Post extends Component {
     render() {
@@ -11,7 +13,7 @@ class Post extends Component {
         return (
             <div>
                 <h1>{post.title}</h1>
-                <p>{post.author}</p>
+                <p>{format(post.timestamp)}, by {post.author}</p>
                 <p>{post.body}</p>
             </div>
         )
