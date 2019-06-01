@@ -50,7 +50,7 @@ class NewPost extends Component {
                     </select>
                 </div>
                 <div>
-                    <button type="submit" disabled={text === ""}>
+                    <button type="submit">
                         Submit
                     </button>
                 </div>

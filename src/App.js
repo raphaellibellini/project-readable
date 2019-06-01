@@ -8,6 +8,7 @@ import ListPosts from './components/ListPosts'
 import Nav from './components/Nav'
 import SelectCategories from './components/SelectCategories'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
+import NewPost from './components/NewPost'
 
 class App extends Component {
   componentDidMount() {
@@ -23,8 +24,9 @@ class App extends Component {
       <div>
         <Nav />
         <SelectCategories />
-        <Route exact path="/" component={ListPosts} />
-        <Route exact path="/category/:id" component={ListPosts} />
+        <Route exact path='/' component={ListPosts} />
+        <Route exact path='/category/:id' component={ListPosts} />
+        <Route path='/new' component={NewPost} />
       </div>
     );
   }

@@ -1,14 +1,19 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Nav() {
     return (
         <nav>
             <ul>
                 <li>
-                    Home
+                    <Link to='/' exact>
+                        Home
+                    </Link>
                 </li>
                 <li>
-                    New Post
+                    <Link to='/new'>
+                        New Post
+                    </Link>
                 </li>
             </ul>
         </nav>
