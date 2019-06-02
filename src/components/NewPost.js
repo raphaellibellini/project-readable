@@ -1,13 +1,53 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Redirect } from 'react-router-dom'
 
 class NewPost extends Component {
+    state = {
+        title: "",
+        body: "",
+        author: "",
+        category: "",
+        toHome: false
+    }
+
+    handleChange = e => {
+        const name = e.target.name;
+        const value = e.target.value;
+    
+        this.setState(() => ({
+          [name]: value
+        }))
+    }
+    
+    handleSubmit = e => {
+        e.preventDefault()
+
+        const { title, body, author, category } = this.state
+
+        console.log("New Post", `Titulo ${title}, Body ${body}, Author ${author}, Cat ${category}`)
+
+        this.setState(() => ({
+            author: '',
+            title: '',
+            category: '',
+            body: '',
+            toHome: false
+        }))
+    }
+
     render() {
         const { categories } = this.props
+        const { body, toHome } = this.state
+
+        if (toHome === true) {
+            return <Redirect to='/' />
+        }
 
         return (
             <div>
-                <form>
+                <h2>Compose your new Post</h2>
+                <form onSubmit={this.handleSubmit}>
                 <div>
                     <label>Title</label>
                         <input
