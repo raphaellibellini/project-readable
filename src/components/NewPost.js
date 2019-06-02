@@ -27,6 +27,7 @@ class NewPost extends Component {
 
         console.log("New Post", `Titulo ${title}, Body ${body}, Author ${author}, Cat ${category}`)
 
+        // Reset state
         this.setState(() => ({
             author: '',
             title: '',
