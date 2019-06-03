@@ -9,6 +9,10 @@ import Nav from './components/Nav'
 import SelectCategories from './components/SelectCategories'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 import NewPost from './components/NewPost'
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faEdit, faTrash, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faEdit, faTrash, faSortUp, faSortDown)
 
 class App extends Component {
   componentDidMount() {

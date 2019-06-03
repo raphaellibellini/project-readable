@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { format } from 'timeago.js';
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 class Post extends Component {
     render() {
@@ -12,7 +12,16 @@ class Post extends Component {
 
         return (
             <div>
+                <div>
+                    <FontAwesomeIcon icon="sort-up" />
+                    <div>{post.voteScore}</div>
+                    <FontAwesomeIcon icon="sort-down" />
+                </div>
                 <h1>{post.title}</h1>
+                <div className="edit-delete">
+                    <FontAwesomeIcon icon="edit" />
+                    <FontAwesomeIcon icon="trash" />
+                </div>
                 <p>{format(post.timestamp)}, by {post.author}</p>
                 <p>{post.body}</p>
             </div>
