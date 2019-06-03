@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { format } from 'timeago.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { connect } from 'react-redux'
+import * as postActions from '../actions/posts';
 
 class Post extends Component {
     render() {
@@ -20,7 +22,7 @@ class Post extends Component {
                 <h1>{post.title}</h1>
                 <div className="edit-delete">
                     <FontAwesomeIcon icon="edit" />
-                    <FontAwesomeIcon icon="trash" />
+                    <FontAwesomeIcon icon="trash" onClick={() => this.props.handleDeletePost(post.id)} />
                 </div>
                 <p>{format(post.timestamp)}, by {post.author}</p>
                 <p>{post.body}</p>
@@ -29,4 +31,4 @@ class Post extends Component {
     }
 }
 
-export default Post
+export default connect(null, postActions)(Post)

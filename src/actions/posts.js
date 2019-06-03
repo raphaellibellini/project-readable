@@ -2,6 +2,7 @@ import * as ReadableAPI from '../utils/ReadableAPI'
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
+export const DELETE_POST = 'DELETE_POST'
 
 export function receivePosts (posts) {
     return {
@@ -27,5 +28,19 @@ export function handleAddPost (post) {
   return dispatch => {
     return ReadableAPI.addPost(post)
       .then((post) => dispatch(addPost(post)))
+  }
+}
+
+function deletePost (id) {
+  return {
+    type: DELETE_POST,
+    id
+  }
+}
+
+export function handleDeletePost (id) {
+  return dispatch => {
+    return ReadableAPI.deletePost(id)
+      .then((id) => dispatch(deletePost(id)))
   }
 }
