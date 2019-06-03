@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { handleAddPost } from '../actions/posts';
 
 class NewPost extends Component {
     state = {
-        title: "",
-        body: "",
-        author: "",
-        category: "",
-        toHome: false
+        title: '',
+        body: '',
+        author: '',
+        category: ''
     }
 
     handleChange = e => {
@@ -19,31 +18,34 @@ class NewPost extends Component {
           [name]: value
         }))
     }
+
+    validate = () => {
+        const { title, author, category, body } = this.state;
+        return title !== '' && author !== '' && category !== '' && body !== '';
+    }
     
     handleSubmit = e => {
         e.preventDefault()
 
-        const { title, body, author, category } = this.state
+        const { ...post } = this.state
+        const { dispatch } = this.props
 
-        console.log("New Post", `Titulo ${title}, Body ${body}, Author ${author}, Cat ${category}`)
+        if (this.validate()) {
+            dispatch(handleAddPost(post))
 
-        // Reset state
-        this.setState(() => ({
-            author: '',
-            title: '',
-            category: '',
-            body: '',
-            toHome: false
-        }))
+            this.setState(() => ({
+                title: '',
+                body: '',
+                author: '',
+                category: ''
+            }))
+        } else {
+            alert('Error adding post! Please fill in all the fields.')
+        }
     }
 
     render() {
         const { categories } = this.props
-        const { body, toHome } = this.state
-
-        if (toHome === true) {
-            return <Redirect to='/' />
-        }
 
         return (
             <div>
@@ -81,14 +83,21 @@ class NewPost extends Component {
                     />
                 </div>
                 <div>
-                    <label>Category</label>
-                    <select onChange={e => this.handleChange(e)} name="category">
-                    {categories.map((category, index) => (
-                        <option key={index} value={category.name}>
-                        {category.name}
+                    <label htmlFor="category">
+                    <select
+                        id="category"
+                        name="category"
+                        value={this.state.category}
+                        onChange={this.handleChange}
+                    >
+                        <option value="select">Select Category</option>
+                        {categories.map(category => (
+                        <option key={category.path} value={category.name}>
+                            {category.name}
                         </option>
-                    ))}
+                        ))}
                     </select>
+                    </label>
                 </div>
                 <div>
                     <button type="submit">

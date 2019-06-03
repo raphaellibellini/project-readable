@@ -1,4 +1,4 @@
-import * as ReadableAPI from './utils/ReadableAPI'
+import * as ReadableAPI from '../utils/ReadableAPI'
 
 export const RECEIVE_POSTS = 'RECEIVE_POSTS'
 export const ADD_POST = 'ADD_POST'
@@ -26,7 +26,6 @@ export function handleAddPost (post) {
 
   return dispatch => {
     return ReadableAPI.addPost(post)
-      .then(post => ReadableAPI.getPostsInCategory(post.category)
-        .then(posts => dispatch(addPost)))
+      .then((post) => dispatch(addPost(post)))
   }
 }

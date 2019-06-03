@@ -36,7 +36,7 @@ export const addPost = post => {
   const data = {
     ...post,
     id: Math.random().toString(),
-    timestamp: Date.now()
+    timestamp: Date.now(),
   }
 
   return fetch(`${api}/posts`, {
