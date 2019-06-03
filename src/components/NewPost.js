@@ -1,13 +1,15 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { handleAddPost } from '../actions/posts';
+import { handleAddPost } from '../actions/posts'
+import { Redirect } from 'react-router-dom'
 
 class NewPost extends Component {
     state = {
         title: '',
         body: '',
         author: '',
-        category: ''
+        category: '',
+        toHome: false
     }
 
     handleChange = e => {
@@ -37,7 +39,8 @@ class NewPost extends Component {
                 title: '',
                 body: '',
                 author: '',
-                category: ''
+                category: '',
+                toHome: true
             }))
         } else {
             alert('Error adding post! Please fill in all the fields.')
@@ -46,6 +49,11 @@ class NewPost extends Component {
 
     render() {
         const { categories } = this.props
+        const { toHome } = this.state
+
+        if (toHome === true) {
+            return <Redirect to='/' />
+        }
 
         return (
             <div>
