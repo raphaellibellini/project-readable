@@ -41,6 +41,6 @@ function deletePost (id) {
 export function handleDeletePost (id) {
   return dispatch => {
     return ReadableAPI.deletePost(id)
-      .then((id) => dispatch(deletePost(id)))
+      .then(() => dispatch(deletePost(id)))
   }
 }

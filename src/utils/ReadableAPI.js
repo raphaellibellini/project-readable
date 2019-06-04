@@ -63,13 +63,13 @@ export const editPost = post => {
 }
 
 
-export const deletePost = id =>
+export const deletePost = id => 
   fetch(`${api}/posts/${id}`, {
     method: 'DELETE',
     headers,
   }).then(res => res.json())
     .then(data => data)
-
+    
 
 export const votePost = (id, option) =>
     fetch(`${api}/posts/${id}`, {
