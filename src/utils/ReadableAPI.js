@@ -71,7 +71,7 @@ export const deletePost = id =>
     .then(data => data)
     
 
-export const votePost = (id, option) =>
+export const votePost = (id, option) => 
     fetch(`${api}/posts/${id}`, {
         method: 'POST',
         headers,

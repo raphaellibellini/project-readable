@@ -2,9 +2,13 @@ import React, { Component } from 'react'
 import { format } from 'timeago.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { connect } from 'react-redux'
-import { handleDeletePost } from '../actions/posts'
+import { handleDeletePost, handleVotePost } from '../actions/posts'
 
 class Post extends Component {
+    handleVote = option => {
+        this.props.dispatch(handleVotePost(this.props.post.id, option))
+    }
+
     render() {
         const { post, dispatch } = this.props
 
@@ -15,9 +19,9 @@ class Post extends Component {
         return (
             <div>
                 <div>
-                    <FontAwesomeIcon icon="sort-up" />
+                    <FontAwesomeIcon icon="sort-up" onClick={() => this.handleVote('upVote')} />
                     <div>{post.voteScore}</div>
-                    <FontAwesomeIcon icon="sort-down" />
+                    <FontAwesomeIcon icon="sort-down" onClick={() => this.handleVote('downVote')} />
                 </div>
                 <h1>{post.title}</h1>
                 <div className="edit-delete">
