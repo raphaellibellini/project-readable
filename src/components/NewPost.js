@@ -48,8 +48,10 @@ class NewPost extends Component {
     }
 
     render() {
-        const { categories } = this.props
+        const { categories, posts } = this.props
         const { toHome } = this.state
+        const postId = this.props.match.params.id
+        let selectedPost = posts.filter((post) => post.id !== postId)
 
         if (toHome === true) {
             return <Redirect to='/' />
@@ -118,9 +120,10 @@ class NewPost extends Component {
     }
 }
 
-function mapStateToProps ({ categories }) {
+const mapStateToProps = state => {
     return {
-        categories
+      posts: state.posts,
+      categories: state.categories
     }
 }
 

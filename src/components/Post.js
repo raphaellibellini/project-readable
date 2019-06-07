@@ -3,6 +3,7 @@ import { format } from 'timeago.js';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { connect } from 'react-redux'
 import { handleDeletePost, handleVotePost } from '../actions/posts'
+import { Link } from 'react-router-dom'
 
 class Post extends Component {
     handleVote = option => {
@@ -25,7 +26,7 @@ class Post extends Component {
                 </div>
                 <h1>{post.title}</h1>
                 <div className="edit-delete">
-                    <FontAwesomeIcon icon="edit" />
+                    <Link to={'edit/' + post.id}><FontAwesomeIcon icon="edit" /></Link>
                     <FontAwesomeIcon icon="trash" onClick={() => dispatch(handleDeletePost(post.id))} />
                 </div>
                 <p>{format(post.timestamp)}, by {post.author}</p>

@@ -31,6 +31,7 @@ class App extends Component {
         <Route exact path='/' component={ListPosts} />
         <Route exact path='/category/:id' component={ListPosts} />
         <Route path='/new' component={NewPost} />
+        <Route exact path='/edit/:id' component={NewPost} />
       </div>
     );
   }
